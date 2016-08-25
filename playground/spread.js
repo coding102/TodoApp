@@ -27,3 +27,5 @@ final.forEach(function (name){
     console.log('hi ' + name);
 });
 
+
+// run node playground/spread.js
