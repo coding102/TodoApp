@@ -58,15 +58,17 @@ var TodoApp = React.createClass({
     render: function () {
         // es6 destructuring
         // var {todos} = this.state;
+        var {todos, showCompleted, searchText} = this.state;
+        var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
         return (
             <div>
                 <TodoSearch onSearch={this.handleSearch} />
-                <TodoList todos={this.state.todos} onToggle={this.handleToggle} />
+                <TodoList todos={filteredTodos} onToggle={this.handleToggle} />
                 <AddTodo onAddTodo={this.handleAddTodo} />
             </div>
         );
     }
-})
+});
 
 module.exports = TodoApp;
