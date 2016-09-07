@@ -1,6 +1,6 @@
 var React = require('react');
 var moment = require('moment');
-
+// clear cache localStorage.removeItem('todos');
 var Todo = React.createClass({
     render: function() {
         var {id, text, completed, createdAt,completedAt} = this.props;
