@@ -1,6 +1,7 @@
 var React = require('react');
 // generates unique id "npm install node-uuid --save-dev"
 var uuid = require('node-uuid');
+var moment = require('moment');
 
 var TodoList = require('TodoList');
 var AddTodo = require('AddTodo');
@@ -27,7 +28,9 @@ var TodoApp = React.createClass({
                 {
                     id: uuid(),
                     text: text,
-                    completed: false
+                    completed: false,
+                    createdAt: moment().unix(),
+                    completedAt: undefined
                 }
             ]
         });
@@ -46,6 +49,7 @@ var TodoApp = React.createClass({
         var updatedTodos = this.state.todos.map((todo) => {
             if (todo.id === id) {
                 todo.completed = !todo.completed;
+                todo.completed = todo.completed ? moment().unix() : undefined;
             }
 
             return todo;
