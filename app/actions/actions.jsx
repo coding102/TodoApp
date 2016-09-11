@@ -1,4 +1,4 @@
-// ACTIONS
+// ACTION GENERATORS >> Reducers to handle actions
 
 export var setSearchText = (searchText) => {
     return {
