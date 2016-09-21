@@ -1,9 +1,12 @@
 var React = require('react');
+var {connect} = require('react-redux');
 var moment = require('moment');
+var actions = require('actions');
+
 // clear cache localStorage.removeItem('todos');
 var Todo = React.createClass({
     render: function() {
-        var {id, text, completed, createdAt,completedAt} = this.props;
+        var {id, text, completed, createdAt,completedAt, dispatch} = this.props;
         var todoClassName = completed ? 'todo todo-completed' : 'todo';
 
         var renderDate = () => {
@@ -20,7 +23,8 @@ var Todo = React.createClass({
 
         return (
             <div className= {todoClassName} onClick={() => {
-                this.props.onToggle(id);
+                // this.props.onToggle(id);
+                dispatch(actions.toggleTodo(id));
                 }} >
 
                 <div>
@@ -35,4 +39,4 @@ var Todo = React.createClass({
     }
 });
 
-module.exports = Todo;
+module.exports = connect()(Todo);
